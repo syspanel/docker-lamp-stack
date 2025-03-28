@@ -142,8 +142,9 @@ Author
 Marco Costa marcocosta@gmx.com
 Support the Project
 
+### Support the Project
 If you find this project useful, consider supporting its development with a donation via PayPal:
 
-Donate via PayPal - marcocosta@gmx.com
+[![Donate via PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?business=marcocosta@gmx.com&currency_code=USD)
 
 
