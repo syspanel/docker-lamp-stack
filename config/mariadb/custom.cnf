@@ -1,0 +1,5 @@
+# config/mariadb/custom.cnf
+[mysqld]
+#innodb_page_size=32k
+bind-address=0.0.0.0
+sql_mode=NO_ENGINE_SUBSTITUTION
