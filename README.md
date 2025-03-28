@@ -18,6 +18,26 @@ A flexible and robust LAMP (Linux, Apache, MySQL/MariaDB, PHP) stack Docker imag
 
 ## Usage
 
+# Docker LAMP Stack
+
+A flexible and robust LAMP (Linux, Apache, MySQL/MariaDB, PHP) stack Docker image with additional tools like Redis, Python, Node.js, and Composer. This project supports configurable PHP and phpMyAdmin versions, managed by Supervisor for process reliability.
+
+## Features
+- **Base:** Ubuntu 24.04
+- **Web Server:** Apache 2
+- **Database:** MariaDB
+- **PHP:** Configurable version (default: 7.4) with essential and optional extensions
+- **phpMyAdmin:** Configurable version (default: 5.1.1) with fallback to 5.2.1
+- **Extras:** Redis, Python 3, Node.js 18.x, Composer
+- **Process Management:** Supervisor
+- **Persistence:** Volumes for MySQL, application data, and logs
+- **Ports:** 80 (Apache), 3306 (MariaDB), 6379 (Redis), with optional additional ports
+
+## Requirements
+- Docker installed on your system
+
+## Usage
+
 ### Build the Image
 1. Clone or download this repository:
    ```bash
@@ -28,54 +48,54 @@ A flexible and robust LAMP (Linux, Apache, MySQL/MariaDB, PHP) stack Docker imag
         PHP 7.4 with phpMyAdmin 5.1.1 (default):
         bash
 
-docker build -t docker-lamp-stack .
-PHP 7.0 with phpMyAdmin 5.1.1:
-bash
-docker build -t docker-lamp-stack-70 --build-arg PHP_VERSION=7.0 --build-arg PHPMYADMIN_VERSION=5.1.1 .
-PHP 7.1 with phpMyAdmin 5.1.1:
-bash
-docker build -t docker-lamp-stack-71 --build-arg PHP_VERSION=7.1 --build-arg PHPMYADMIN_VERSION=5.1.1 .
-PHP 7.2 with phpMyAdmin 5.1.1:
-bash
-docker build -t docker-lamp-stack-72 --build-arg PHP_VERSION=7.2 --build-arg PHPMYADMIN_VERSION=5.1.1 .
-PHP 7.3 with phpMyAdmin 5.1.1:
-bash
-docker build -t docker-lamp-stack-73 --build-arg PHP_VERSION=7.3 --build-arg PHPMYADMIN_VERSION=5.1.1 .
-PHP 7.4 with phpMyAdmin 5.1.1:
-bash
-docker build -t docker-lamp-stack-74 --build-arg PHP_VERSION=7.4 --build-arg PHPMYADMIN_VERSION=5.1.1 .
-PHP 8.0 with phpMyAdmin 5.2.1:
-bash
-docker build -t docker-lamp-stack-80 --build-arg PHP_VERSION=8.0 --build-arg PHPMYADMIN_VERSION=5.2.1 .
-PHP 8.1 with phpMyAdmin 5.2.1:
-bash
-docker build -t docker-lamp-stack-81 --build-arg PHP_VERSION=8.1 --build-arg PHPMYADMIN_VERSION=5.2.1 .
-PHP 8.2 with phpMyAdmin 5.2.1:
-bash
-docker build -t docker-lamp-stack-82 --build-arg PHP_VERSION=8.2 --build-arg PHPMYADMIN_VERSION=5.2.1 .
-PHP 8.3 with phpMyAdmin 5.2.1:
-bash
-
+        docker build -t docker-lamp-stack .
+        PHP 7.0 with phpMyAdmin 5.1.1:
+        bash
+        docker build -t docker-lamp-stack-70 --build-arg PHP_VERSION=7.0 --build-arg PHPMYADMIN_VERSION=5.1.1 .
+        PHP 7.1 with phpMyAdmin 5.1.1:
+        bash
+        docker build -t docker-lamp-stack-71 --build-arg PHP_VERSION=7.1 --build-arg PHPMYADMIN_VERSION=5.1.1 .
+        PHP 7.2 with phpMyAdmin 5.1.1:
+        bash
+        docker build -t docker-lamp-stack-72 --build-arg PHP_VERSION=7.2 --build-arg PHPMYADMIN_VERSION=5.1.1 .
+        PHP 7.3 with phpMyAdmin 5.1.1:
+        bash
+        docker build -t docker-lamp-stack-73 --build-arg PHP_VERSION=7.3 --build-arg PHPMYADMIN_VERSION=5.1.1 .
+        PHP 7.4 with phpMyAdmin 5.1.1:
+        bash
+        docker build -t docker-lamp-stack-74 --build-arg PHP_VERSION=7.4 --build-arg PHPMYADMIN_VERSION=5.1.1 .
+        PHP 8.0 with phpMyAdmin 5.2.1:
+        bash
+        docker build -t docker-lamp-stack-80 --build-arg PHP_VERSION=8.0 --build-arg PHPMYADMIN_VERSION=5.2.1 .
+        PHP 8.1 with phpMyAdmin 5.2.1:
+        bash
+        docker build -t docker-lamp-stack-81 --build-arg PHP_VERSION=8.1 --build-arg PHPMYADMIN_VERSION=5.2.1 .
+        PHP 8.2 with phpMyAdmin 5.2.1:
+        bash
+        docker build -t docker-lamp-stack-82 --build-arg PHP_VERSION=8.2 --build-arg PHPMYADMIN_VERSION=5.2.1 .
+        PHP 8.3 with phpMyAdmin 5.2.1:
+        bash
         docker build -t docker-lamp-stack-83 --build-arg PHP_VERSION=8.3 --build-arg PHPMYADMIN_VERSION=5.2.1 .
         Note: If the specified PHPMYADMIN_VERSION is unavailable, it falls back to 5.2.1.
 
 Run the Container
 
 Run the container with persistent volumes for the application, MySQL data, and logs. Below is an example with additional ports and log mapping:
-bash
-docker run --name "docker-lamp-stack" \
-  -p "8080:80" -p "8082:3306" -p "8083:6379" \
-  -v ${PWD}/app:/app -v ${PWD}/mysql:/var/lib/mysql \
-  -v ${PWD}/logs:/var/log \
-  -d docker-lamp-stack-74
+   bash
+   
+      docker run --name "docker-lamp-stack" \
+        -p "8080:80" -p "8082:3306" -p "8083:6379" \
+        -v ${PWD}/app:/app -v ${PWD}/mysql:/var/lib/mysql \
+        -v ${PWD}/logs:/var/log \
+        -d docker-lamp-stack-74
 
-    Basic Example (without additional ports or logs):
-    bash
-
-    docker run --name "docker-lamp-stack" \
-      -p "8080:80" -p "8082:3306" -p "8083:6379" \
-      -v ${PWD}/app:/app -v ${PWD}/mysql:/var/lib/mysql \
-      -d docker-lamp-stack
+Basic Example (without additional ports or logs):
+    bash  
+    
+       docker run --name "docker-lamp-stack" \
+         -p "8080:80" -p "8082:3306" -p "8083:6379" \
+         -v ${PWD}/app:/app -v ${PWD}/mysql:/var/lib/mysql \
+         -d docker-lamp-stack
 
 Access
 
@@ -125,3 +145,5 @@ Support the Project
 If you find this project useful, consider supporting its development with a donation via PayPal:
 
 Donate via PayPal - marcocosta@gmx.com
+
+
